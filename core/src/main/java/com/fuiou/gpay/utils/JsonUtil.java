@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * Created by chujun on 2017/3/10.
  */
-public class JsonUtils {
+public class JsonUtil {
     private static final Gson gson = new Gson();
 
     /**
