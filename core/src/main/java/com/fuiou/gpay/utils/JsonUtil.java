@@ -12,6 +12,9 @@ import java.util.List;
 public class JsonUtil {
     private static final Gson gson = new Gson();
 
+    /**
+     * 序列化null字段
+     */
     private static final Gson serializeNullsGson = new GsonBuilder().serializeNulls().create();
 
     /**
@@ -22,7 +25,7 @@ public class JsonUtil {
      * @return
      */
     public static <T> String toJson(T t) {
-        return gson.toJson(t);
+        return toJson(t,false);
     }
 
     /**
