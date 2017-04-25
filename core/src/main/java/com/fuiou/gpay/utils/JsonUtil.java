@@ -1,6 +1,7 @@
 package com.fuiou.gpay.utils;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
 import java.util.List;
@@ -11,6 +12,8 @@ import java.util.List;
 public class JsonUtil {
     private static final Gson gson = new Gson();
 
+    private static final Gson serializeNullsGson = new GsonBuilder().serializeNulls().create();
+
     /**
      * 对象转化为json对象
      *
@@ -20,6 +23,18 @@ public class JsonUtil {
      */
     public static <T> String toJson(T t) {
         return gson.toJson(t);
+    }
+
+    /**
+     * 对象转化为json对象
+     *
+     * @param t
+     * @param serializeNulls 是否序列化null
+     * @param <T>
+     * @return
+     */
+    public static <T> String toJson(T t, boolean serializeNulls) {
+        return serializeNulls ? serializeNullsGson.toJson(t) : gson.toJson(t);
     }
 
     /**
