@@ -32,6 +32,7 @@
         </dependency>
 
         <!--db2 jdbc-->
+        <!--db2jcc 和 db2jcc_license_cu jar已经导入到nuxes库当中去了-->
         <dependency>
             <groupId>db2jcc</groupId>
             <artifactId>db2jcc</artifactId>
