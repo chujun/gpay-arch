@@ -1,4 +1,4 @@
-package com.fuiou.gpay.exception;
+package com.fuiou.gpay.arch.exception;
 
 @SuppressWarnings("serial")
 public class BusinessException extends Exception {

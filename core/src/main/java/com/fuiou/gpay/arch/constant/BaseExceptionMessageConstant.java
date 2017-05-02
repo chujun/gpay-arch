@@ -1,4 +1,4 @@
-package com.fuiou.gpay.constant;
+package com.fuiou.gpay.arch.constant;
 
 /**
  * Created by chujun on 2017/4/1.

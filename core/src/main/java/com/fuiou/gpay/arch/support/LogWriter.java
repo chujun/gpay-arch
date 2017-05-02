@@ -1,4 +1,4 @@
-package com.fuiou.gpay.support;
+package com.fuiou.gpay.arch.support;
 
 import org.apache.log4j.Logger;
 

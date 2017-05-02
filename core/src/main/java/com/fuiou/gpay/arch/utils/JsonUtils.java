@@ -1,4 +1,4 @@
-package com.fuiou.gpay.utils;
+package com.fuiou.gpay.arch.utils;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * Created by chujun on 2017/3/10.
  */
-public class JsonUtil {
+public class JsonUtils {
     private static final Gson gson = new Gson();
 
     /**
