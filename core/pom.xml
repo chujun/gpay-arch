@@ -18,6 +18,14 @@
     </properties>
 
     <dependencies>
+
+        <!--arch-dubbo-->
+        <dependency>
+            <groupId>${project.parent.groupId}</groupId>
+            <artifactId>arch-dubbo</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
+
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
