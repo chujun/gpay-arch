@@ -60,6 +60,19 @@
             <scope>test</scope>
         </dependency>
 
+        <!--aop-->
+        <dependency>
+            <groupId>aopalliance</groupId>
+            <artifactId>aopalliance</artifactId>
+            <version>1.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.geronimo.bundles</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>1.6.8_2</version>
+        </dependency>
+
         <!--json-->
         <dependency>
             <groupId>com.google.code.gson</groupId>
