@@ -19,13 +19,6 @@
 
     <dependencies>
 
-        <!--arch-dubbo-->
-        <dependency>
-            <groupId>${project.parent.groupId}</groupId>
-            <artifactId>arch-dubbo</artifactId>
-            <version>${project.parent.version}</version>
-        </dependency>
-
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
@@ -99,6 +92,13 @@
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
             <version>1.2.16</version>
+        </dependency>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.8.1</version>
+            <scope>test</scope>
         </dependency>
 
     </dependencies>
