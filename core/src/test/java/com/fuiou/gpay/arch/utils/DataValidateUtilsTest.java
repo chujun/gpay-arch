@@ -2,6 +2,7 @@ package com.fuiou.gpay.arch.utils;
 
 import com.fuiou.gpay.arch.bean.http.CefilresRequest;
 import com.fuiou.gpay.arch.constant.Constants;
+import com.fuiou.gpay.arch.exception.BaseExceptionBuilder;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -15,13 +16,23 @@ public class DataValidateUtilsTest {
     @Test
     public void case01_validate_null() {
         CefilresRequest data = null;
-        DataValidateUtils.validate(data);
+        try {
+            DataValidateUtils.validate(data);
+            throw BaseExceptionBuilder.buildSystemException("can't run here",null);
+        }catch (Exception e){
+            Assert.assertEquals(e.getMessage(),"[validatedObject] must not be null");
+        }
     }
 
     @Test
     public void case01_validate() {
         CefilresRequest data = new CefilresRequest();
-        DataValidateUtils.validate(data);
+        try {
+            DataValidateUtils.validate(data);
+            throw BaseExceptionBuilder.buildSystemException("can't run here",null);
+        }catch (Exception e){
+            Assert.assertEquals("数据格式不合法",e.getMessage());
+        }
     }
 
     @Test
@@ -29,7 +40,12 @@ public class DataValidateUtilsTest {
         CefilresRequest data = new CefilresRequest();
         data.setE3rdPayNo(Constants.e3rdPayNo);
         data.setTransTime("20160223 332233");
-        DataValidateUtils.validate(data);
+        try {
+            DataValidateUtils.validate(data);
+            throw BaseExceptionBuilder.buildSystemException("can't run here",null);
+        }catch (Exception e){
+            Assert.assertEquals("数据格式不合法",e.getMessage());
+        }
     }
 
     @Test
@@ -45,14 +61,17 @@ public class DataValidateUtilsTest {
         CefilresRequest data = new CefilresRequest();
         List<String> errorMessage = DataValidateUtils.validateAndGetErrorMessages(data);
         System.out.println("errorMessage:" + errorMessage);
+        Assert.assertTrue(errorMessage.size()>0);
+        //errorMessage:[com.fuiou.gpay.arch.bean.http.CefilresRequest.e3rdPayNo cannot be null, com.fuiou.gpay.arch.bean.http.CefilresRequest.transTime cannot be null]
     }
 
     @Test
-    public void case02_validateAndGetErrorMessages_memberOf() {
+    public void case03_validateAndGetErrorMessages_memberOf() {
         CefilresRequest data = new CefilresRequest();
         data.setE3rdPayNo("我是不合法的支付机构编号");
         List<String> errorMessage = DataValidateUtils.validateAndGetErrorMessages(data);
         System.out.println("errorMessage:" + errorMessage);
+        Assert.assertTrue(JsonUtils.toJson(errorMessage).contains("与中信分配给富友的编号不符合"));
     }
 
 
