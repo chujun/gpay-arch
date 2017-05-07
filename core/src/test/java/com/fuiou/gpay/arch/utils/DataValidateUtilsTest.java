@@ -75,6 +75,39 @@ public class DataValidateUtilsTest {
     }
 
 
+    /**
+     * 验证getter方法返回值是否符合约束
+     * 暂时没想到什么场景会要求设置getter方法约束
+     * --->查看源代码可知ClassCheck.constrainedFields,只要是非静态方法,且没有方法参数的方法,添加@IsInvariant都会进行验证
+     * --->这样的话,其实应该是有应用场景的,比如方法内部拼装后对象,验证是否为null
+     */
+
+
+    @Test
+    public void case10_getter_method_isInvariant(){
+        CefilresRequest data = new CefilresRequest();
+        data.setE3rdPayNo(Constants.e3rdPayNo);
+        data.setTransTime("20160223 13:22:33");
+        List<String> errorMessage = DataValidateUtils.validateAndGetErrorMessages(data);
+        System.out.println("errorMessage:" + errorMessage);
+        //errorMessage:[com.fuiou.gpay.arch.bean.http.CefilresRequest.getBankName() cannot be null]
+
+    }
+
+
+    @Test
+    public void case10_getter_method_isInvariant_for_not_getter_method(){
+        CefilresRequest data = new CefilresRequest();
+        data.setE3rdPayNo(Constants.e3rdPayNo);
+        data.setTransTime("20160223 13:22:33");
+        data.setBankName("citi");
+        List<String> errorMessage = DataValidateUtils.validateAndGetErrorMessages(data);
+        System.out.println("errorMessage:" + errorMessage);
+        //errorMessage:[com.fuiou.gpay.arch.bean.http.CefilresRequest.getBankName() cannot be null]
+
+    }
+
+
     @Test
     public void case100_YYYYMMDDHHMMSSRegEp() {
 

@@ -2,6 +2,7 @@ package com.fuiou.gpay.arch.bean.http;
 
 import com.fuiou.gpay.arch.constant.Constants;
 import com.fuiou.gpay.arch.utils.DataValidateUtils;
+import net.sf.oval.configuration.annotation.IsInvariant;
 import net.sf.oval.constraint.MatchPattern;
 import net.sf.oval.constraint.MemberOf;
 import net.sf.oval.constraint.NotNull;
@@ -64,6 +65,14 @@ public class CefilresRequest {
      */
     private String errDesc;
 
+    @IsInvariant
+    @NotNull
+    public String getHelloWorld() {
+        return null;
+    }
+
+    @IsInvariant
+    @NotNull
     public String getBankName() {
         return bankName;
     }
