@@ -53,7 +53,11 @@ public class DataValidateUtilsTest {
         CefilresRequest data = new CefilresRequest();
         data.setE3rdPayNo(Constants.e3rdPayNo);
         data.setTransTime("20160223 13:22:33");
-        DataValidateUtils.validate(data);
+        try {
+            DataValidateUtils.validate(data);
+        }catch (Exception e){
+            Assert.assertEquals("数据格式不合法",e.getMessage());
+        }
     }
 
     @Test
