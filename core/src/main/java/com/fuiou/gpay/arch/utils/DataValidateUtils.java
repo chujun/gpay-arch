@@ -1,10 +1,10 @@
 package com.fuiou.gpay.arch.utils;
 
 import com.fuiou.gpay.arch.exception.BaseExceptionBuilder;
-import com.fuiou.gpay.arch.support.LogWriter;
 import net.sf.oval.ConstraintViolation;
 import net.sf.oval.Validator;
 import org.apache.commons.collections.CollectionUtils;
+import org.apache.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -19,6 +19,8 @@ import java.util.List;
  * 需要加上@NotNull，这个比较恶心，不知道怎么调整
  */
 public class DataValidateUtils {
+    final static Logger LOGGER = Logger.getLogger(DataValidateUtils.class);
+
     /**
      * 日期格式:YYYYMMDD HH:MM:SS
      */
@@ -44,7 +46,7 @@ public class DataValidateUtils {
         List<ConstraintViolation> violations = validator.validate(t);
 
         if (violations.size() > 0) {
-            LogWriter.error("Object is invalid," + violations.get(0) + ",obj=" + JsonUtils.toJson(t));
+            LOGGER.error("Object is invalid," + violations.get(0) + ",obj=" + JsonUtils.toJson(t));
             throw BaseExceptionBuilder.buildSystemException("数据格式不合法", null);
         }
     }

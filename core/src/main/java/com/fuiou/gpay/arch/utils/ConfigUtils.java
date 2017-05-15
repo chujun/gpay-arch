@@ -1,6 +1,6 @@
 package com.fuiou.gpay.arch.utils;
 
-import com.fuiou.gpay.arch.support.LogWriter;
+import org.apache.log4j.Logger;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.beans.factory.config.PropertyPlaceholderConfigurer;
@@ -14,6 +14,8 @@ import java.util.*;
  * 通过PropertyPlaceholderConfigurer
  */
 public class ConfigUtils extends PropertyPlaceholderConfigurer {
+    final static Logger LOGGER = Logger.getLogger(ConfigUtils.class);
+
     /**
      * 默认分割符
      */
@@ -28,7 +30,7 @@ public class ConfigUtils extends PropertyPlaceholderConfigurer {
             String keyStr = key.toString().trim();
             propertiesMap.put(keyStr, props.getProperty(keyStr).trim());
         }
-        LogWriter.debug("total loaded properties " + propertiesMap.size() + ",");
+        LOGGER.debug("total loaded properties " + propertiesMap.size() + ",");
     }
 
     public static String getString(String key) {
@@ -64,10 +66,10 @@ public class ConfigUtils extends PropertyPlaceholderConfigurer {
      */
     public static File getFile(String key){
         try {
-            LogWriter.info("开始加载资源文件:key="+key);
+            LOGGER.info("开始加载资源文件:key="+key);
             return ResourceUtils.getFile(getString(key));
         } catch (FileNotFoundException e) {
-            LogWriter.error("文件未发现异常,key="+key,e);
+            LOGGER.error("文件未发现异常,key="+key,e);
             throw new RuntimeException(e);
         }
     }
