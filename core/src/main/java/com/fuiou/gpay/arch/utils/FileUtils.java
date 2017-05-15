@@ -1,12 +1,12 @@
 package com.fuiou.gpay.arch.utils;
 
 
+import com.fuiou.gpay.arch.support.LogWriter;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import com.fuiou.gpay.arch.support.LogWriter;
 
 /**
  * Created by chujun on 2017/3/7.
