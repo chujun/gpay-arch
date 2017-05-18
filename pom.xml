@@ -4,8 +4,8 @@
 
     <groupId>com.fuiou.gpay</groupId>
     <artifactId>arch-parent</artifactId>
-    <version>1.0.0.3-SNAPSHOT</version>
-    <!--<version>1.0.0.2</version>-->
+    <!--<version>1.0.0.3-SNAPSHOT</version>-->
+    <version>1.0.0.3</version>
     <modules>
         <module>core</module>
         <module>db</module>
