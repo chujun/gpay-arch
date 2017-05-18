@@ -3,8 +3,8 @@
     <parent>
         <artifactId>arch-parent</artifactId>
         <groupId>com.fuiou.gpay</groupId>
-        <!--<version>1.0.0-SNAPSHOT</version>-->
-        <version>1.0.0.2</version>
+        <version>1.0.0.3-SNAPSHOT</version>
+        <!--<version>1.0.0.2</version>-->
     </parent>
     <modelVersion>4.0.0</modelVersion>
 

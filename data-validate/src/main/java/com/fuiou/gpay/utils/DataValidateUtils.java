@@ -1,9 +1,7 @@
-package com.fuiou.gpay.arch.utils;
+package com.fuiou.gpay.utils;
 
-import com.fuiou.gpay.arch.exception.BaseExceptionBuilder;
 import net.sf.oval.ConstraintViolation;
 import net.sf.oval.Validator;
-import org.apache.commons.collections.CollectionUtils;
 import org.apache.log4j.Logger;
 
 import java.util.ArrayList;
@@ -53,8 +51,8 @@ public class DataValidateUtils {
         List<ConstraintViolation> violations = validator.validate(t);
 
         if (violations.size() > 0) {
-            LOGGER.error("Object is invalid," + violations.get(0) + ",obj=" + JsonUtils.toJson(t));
-            throw BaseExceptionBuilder.buildSystemException("数据格式不合法", null);
+            LOGGER.error("Object is invalid," + violations.get(0) + ",obj=" + t);
+            throw new RuntimeException("数据格式不合法," + violations.get(0), null);
         }
     }
 
@@ -79,7 +77,7 @@ public class DataValidateUtils {
     }
 
     private static List<String> getErrorMessages(List<ConstraintViolation> violations) {
-        if (CollectionUtils.isEmpty(violations)) {
+        if (null == violations || 0 == violations.size()) {
             return Collections.emptyList();
         }
         List<String> result = new ArrayList<String>();

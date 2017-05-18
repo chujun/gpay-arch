@@ -1,8 +1,8 @@
-package com.fuiou.gpay.arch.utils;
+package com.fuiou.gpay.arch.datavalidate.utils;
 
-import com.fuiou.gpay.arch.bean.http.CefilresRequest;
-import com.fuiou.gpay.arch.constant.Constants;
-import com.fuiou.gpay.arch.exception.BaseExceptionBuilder;
+import com.fuiou.gpay.arch.datavalidate.bean.http.CefilresRequest;
+import com.fuiou.gpay.arch.datavalidate.constant.Constants;
+import com.fuiou.gpay.utils.DataValidateUtils;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -18,7 +18,7 @@ public class DataValidateUtilsTest {
         CefilresRequest data = null;
         try {
             DataValidateUtils.validate(data);
-            throw BaseExceptionBuilder.buildSystemException("can't run here",null);
+            throw new RuntimeException("can't run here",null);
         }catch (Exception e){
             Assert.assertEquals(e.getMessage(),"[validatedObject] must not be null");
         }
@@ -29,9 +29,9 @@ public class DataValidateUtilsTest {
         CefilresRequest data = new CefilresRequest();
         try {
             DataValidateUtils.validate(data);
-            throw BaseExceptionBuilder.buildSystemException("can't run here",null);
+            throw new RuntimeException("can't run here",null);
         }catch (Exception e){
-            Assert.assertEquals("数据格式不合法",e.getMessage());
+            Assert.assertEquals("数据格式不合法,net.sf.oval.ConstraintViolation: com.fuiou.gpay.arch.datavalidate.bean.http.CefilresRequest.e3rdPayNo cannot be null",e.getMessage());
         }
     }
 
@@ -42,9 +42,9 @@ public class DataValidateUtilsTest {
         data.setTransTime("20160223 332233");
         try {
             DataValidateUtils.validate(data);
-            throw BaseExceptionBuilder.buildSystemException("can't run here",null);
+            throw new RuntimeException("can't run here",null);
         }catch (Exception e){
-            Assert.assertEquals("数据格式不合法",e.getMessage());
+            Assert.assertEquals("数据格式不合法,net.sf.oval.ConstraintViolation: 日期格式不符合要求,YYYYMMDD HH:MM:SS",e.getMessage());
         }
     }
 
@@ -56,7 +56,7 @@ public class DataValidateUtilsTest {
         try {
             DataValidateUtils.validate(data);
         }catch (Exception e){
-            Assert.assertEquals("数据格式不合法",e.getMessage());
+            Assert.assertEquals("数据格式不合法,net.sf.oval.ConstraintViolation: com.fuiou.gpay.arch.datavalidate.bean.http.CefilresRequest.getHelloWorld() cannot be null",e.getMessage());
         }
     }
 
@@ -75,7 +75,7 @@ public class DataValidateUtilsTest {
         data.setE3rdPayNo("我是不合法的支付机构编号");
         List<String> errorMessage = DataValidateUtils.validateAndGetErrorMessages(data);
         System.out.println("errorMessage:" + errorMessage);
-        Assert.assertTrue(JsonUtils.toJson(errorMessage).contains("与中信分配给富友的编号不符合"));
+        Assert.assertTrue(errorMessage.contains("与中信分配给富友的编号不符合"));
     }
 
 
