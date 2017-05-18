@@ -21,10 +21,17 @@ import java.util.List;
 public class DataValidateUtils {
     final static Logger LOGGER = Logger.getLogger(DataValidateUtils.class);
 
+
+    public static final String YYYYMMRegEp = "\\d{4}(0[1-9]|1[0-2])";
+
+    public static final String YYYYMMDDRegEp = "\\d{4}(0[1-9]|1[0-2])((0[1-9])|((1|2)[0-9])|30|31)";
+
+    public static final String HHMMSSRegEp = "([0-1]\\d|2[0-3]):([0-5]\\d):([0-5]\\d)";
+
     /**
      * 日期格式:YYYYMMDD HH:MM:SS
      */
-    public static final String YYYYMMDDHHMMSSRegEp = "^\\d{4}(0[1-9]|1[0-2])((0[1-9])|((1|2)[0-9])|30|31) ([0-1]\\d|2[0-3]):([0-5]\\d):([0-5]\\d)$";
+    public static final String YYYYMMDDHHMMSSRegEp = YYYYMMDDRegEp + " " + HHMMSSRegEp;
     /**
      * null值错误信息
      */

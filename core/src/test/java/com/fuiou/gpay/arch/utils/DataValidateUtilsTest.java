@@ -131,4 +131,26 @@ public class DataValidateUtilsTest {
         Assert.assertEquals(false, pattern.matcher("20161231 23:00:60").matches());
         Assert.assertEquals(false, pattern.matcher("20161231 23:00:601").matches());
     }
+
+    @Test
+    public void case100_YYYYYMMRegEp(){
+        Pattern pattern = Pattern.compile(DataValidateUtils.YYYYMMRegEp);
+        Assert.assertEquals(true,pattern.matcher("201701").matches());
+        Assert.assertEquals(true,pattern.matcher("201712").matches());
+        Assert.assertEquals(false,pattern.matcher("201700").matches());
+        Assert.assertEquals(false,pattern.matcher("201713").matches());
+        Assert.assertEquals(false,pattern.matcher("20170").matches());
+        Assert.assertEquals(false,pattern.matcher("2017100").matches());
+    }
+
+    @Test
+    public void case100_HHMMSSRegEp(){
+        Pattern pattern = Pattern.compile(DataValidateUtils.HHMMSSRegEp);
+        Assert.assertEquals(true,pattern.matcher("23:00:00").matches());
+        Assert.assertEquals(true,pattern.matcher("00:00:00").matches());
+        Assert.assertEquals(false,pattern.matcher("24:00:00").matches());
+        Assert.assertEquals(false,pattern.matcher("25:00:00").matches());
+        Assert.assertEquals(false,pattern.matcher("20170").matches());
+        Assert.assertEquals(false,pattern.matcher("2017100").matches());
+    }
 }
