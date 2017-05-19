@@ -1,7 +1,7 @@
 package com.fuiou.gpay.arch.datavalidate.bean.http;
 
 import com.fuiou.gpay.arch.datavalidate.constant.Constants;
-import com.fuiou.gpay.utils.DataValidateUtils;
+import com.fuiou.gpay.dataValidate.utils.DataValidateUtils;
 import net.sf.oval.configuration.annotation.IsInvariant;
 import net.sf.oval.constraint.MatchPattern;
 import net.sf.oval.constraint.MemberOf;

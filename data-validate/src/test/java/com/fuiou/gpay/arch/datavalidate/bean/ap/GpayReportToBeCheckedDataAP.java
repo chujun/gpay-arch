@@ -1,6 +1,6 @@
 package com.fuiou.gpay.arch.datavalidate.bean.ap;
 
-import com.fuiou.gpay.utils.DataValidateUtils;
+import com.fuiou.gpay.dataValidate.utils.DataValidateUtils;
 import net.sf.oval.constraint.MatchPattern;
 import net.sf.oval.constraint.NotNull;
 

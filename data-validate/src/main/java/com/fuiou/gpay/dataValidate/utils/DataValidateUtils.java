@@ -1,4 +1,4 @@
-package com.fuiou.gpay.utils;
+package com.fuiou.gpay.dataValidate.utils;
 
 import net.sf.oval.ConstraintViolation;
 import net.sf.oval.Validator;

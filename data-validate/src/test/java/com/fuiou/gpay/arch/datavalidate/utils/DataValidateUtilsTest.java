@@ -2,7 +2,7 @@ package com.fuiou.gpay.arch.datavalidate.utils;
 
 import com.fuiou.gpay.arch.datavalidate.bean.http.CefilresRequest;
 import com.fuiou.gpay.arch.datavalidate.constant.Constants;
-import com.fuiou.gpay.utils.DataValidateUtils;
+import com.fuiou.gpay.dataValidate.utils.DataValidateUtils;
 import org.junit.Assert;
 import org.junit.Test;
 
