@@ -1,7 +1,6 @@
-package com.fuiou.gpay.arch.constant.enums;
+package com.fuiou.gpay.basic.constant.enums;
 
 
-import org.apache.commons.lang3.StringUtils;
 
 /**
  * Created by chujun on 2017/3/31.
@@ -26,7 +25,7 @@ public enum CurrencyEnum {
     }
 
     public static CurrencyEnum getByValue(String value) {
-        if(StringUtils.isEmpty(value)){
+        if(null == value || "".equals(value)){
             return null;
         }
         for (CurrencyEnum currencyEnum : CurrencyEnum.values()) {

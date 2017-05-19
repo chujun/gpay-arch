@@ -11,6 +11,7 @@
         <module>db</module>
         <module>dubbo</module>
         <module>data-validate</module>
+        <module>basic</module>
     </modules>
     <packaging>pom</packaging>
 

@@ -1,4 +1,4 @@
-package com.fuiou.gpay.arch.constant.enums;
+package com.fuiou.gpay.basic.constant.enums;
 
 /**
  * Created by chujun on 2017/3/31.
