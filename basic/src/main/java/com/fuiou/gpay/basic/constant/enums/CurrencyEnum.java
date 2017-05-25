@@ -14,7 +14,7 @@ public enum CurrencyEnum {
     JPY("JPY","日元"),
     KRW("KRW","韩元"),
     AUD("AUD","澳大利亚元"),
-    CNY("CNY","日民币"),
+    CNY("CNY","人民币"),
     ;
     private String value;
     private String desc;
