@@ -31,12 +31,14 @@
             <groupId>db2jcc</groupId>
             <artifactId>db2jcc</artifactId>
             <version>1.0</version>
+            <optional>true</optional>
         </dependency>
 
         <dependency>
             <groupId>db2jcc</groupId>
             <artifactId>db2jcc_license_cu</artifactId>
             <version>1.0</version>
+            <optional>true</optional>
         </dependency>
 
         <!--mybatis-->
