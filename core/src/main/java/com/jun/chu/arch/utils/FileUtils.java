@@ -1,7 +1,7 @@
 package com.jun.chu.arch.utils;
 
 
-import org.apache.log4j.Logger;
+import lombok.extern.slf4j.Slf4j;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -11,8 +11,8 @@ import java.io.FileOutputStream;
 /**
  * Created by chujun on 2017/3/7.
  */
+@Slf4j
 public class FileUtils {
-    final static Logger LOGGER = Logger.getLogger(FileUtils.class);
 
     /**
      * @param file
@@ -22,7 +22,7 @@ public class FileUtils {
         try {
             return new String(read4file(file.getAbsolutePath()));
         } catch (Exception e) {
-            LOGGER.error("读取文件配置失败,file=" + file.getAbsolutePath(), e);
+            log.error("读取文件配置失败,file=" + file.getAbsolutePath(), e);
             throw new RuntimeException("读取文件配置失败,file=" + file.getAbsolutePath(), e);
         }
     }
@@ -51,7 +51,7 @@ public class FileUtils {
                     baos.close();
                 }
             } catch (Exception e) {
-                LOGGER.error("文件流关闭异常,", e);
+                log.error("文件流关闭异常,", e);
             }
 
         }
@@ -85,7 +85,7 @@ public class FileUtils {
                     fos.close();
                 }
             } catch (Exception e) {
-                LOGGER.error("文件流关闭异常,", e);
+                log.error("文件流关闭异常,", e);
             }
 
         }
@@ -102,7 +102,7 @@ public class FileUtils {
         File tmp = new File(originFilePath);
         File parentFile = tmp.getParentFile();
         if (!parentFile.exists()) {
-            LOGGER.info("目录不存在:" + parentFile.getAbsolutePath());
+            log.info("目录不存在:" + parentFile.getAbsolutePath());
             parentFile.mkdirs();
         }
     }

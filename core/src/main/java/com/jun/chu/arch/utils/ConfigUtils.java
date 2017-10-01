@@ -1,6 +1,6 @@
 package com.jun.chu.arch.utils;
 
-import org.apache.log4j.Logger;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.beans.factory.config.PropertyPlaceholderConfigurer;
@@ -13,8 +13,8 @@ import java.util.*;
 /**
  * 通过PropertyPlaceholderConfigurer
  */
+@Slf4j
 public class ConfigUtils extends PropertyPlaceholderConfigurer {
-    final static Logger LOGGER = Logger.getLogger(ConfigUtils.class);
 
     /**
      * 默认分割符
@@ -30,7 +30,8 @@ public class ConfigUtils extends PropertyPlaceholderConfigurer {
             String keyStr = key.toString().trim();
             propertiesMap.put(keyStr, props.getProperty(keyStr).trim());
         }
-        LOGGER.debug("total loaded properties " + propertiesMap.size() + ",");
+
+        log.debug("total loaded properties " + propertiesMap.size() + ",");
     }
 
     public static String getString(String key) {
@@ -66,10 +67,10 @@ public class ConfigUtils extends PropertyPlaceholderConfigurer {
      */
     public static File getFile(String key){
         try {
-            LOGGER.info("开始加载资源文件:key="+key);
+            log.info("开始加载资源文件:key="+key);
             return ResourceUtils.getFile(getString(key));
         } catch (FileNotFoundException e) {
-            LOGGER.error("文件未发现异常,key="+key,e);
+            log.error("文件未发现异常,key="+key,e);
             throw new RuntimeException(e);
         }
     }

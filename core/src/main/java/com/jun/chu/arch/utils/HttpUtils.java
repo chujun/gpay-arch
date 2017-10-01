@@ -1,5 +1,6 @@
 package com.jun.chu.arch.utils;
 
+import lombok.extern.slf4j.Slf4j;
 import org.apache.http.Header;
 import org.apache.http.HttpStatus;
 import org.apache.http.HttpVersion;
@@ -14,7 +15,6 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.protocol.HTTP;
 import org.apache.http.util.EntityUtils;
-import org.apache.log4j.Logger;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -25,10 +25,8 @@ import java.util.Map;
  * @author liuyu.lu
  * @since Mar 9, 2016
  */
+@Slf4j
 public class HttpUtils {
-
-    final static Logger LOGGER = Logger.getLogger(HttpUtils.class);
-
 
     private static final String APPLICATION_JSON = "application/json";
 
@@ -60,10 +58,10 @@ public class HttpUtils {
             response = httpClient.execute(httpPost);
             if (HttpStatus.SC_OK == response.getStatusLine().getStatusCode()) {
                 String result = EntityUtils.toString(response.getEntity());
-                LOGGER.info(String.format("请求响应结果:url=%s,result=%s,", url, result));
+                log.info(String.format("请求响应结果:url=%s,result=%s,", url, result));
                 return result;
             } else {
-                LOGGER.error("Http状态出错url=" + url + ",response=" + response.getStatusLine().getStatusCode() + "jsonParam=" + JsonUtils.toJson(paramsMap));
+                log.error("Http状态出错url=" + url + ",response=" + response.getStatusLine().getStatusCode() + "jsonParam=" + JsonUtils.toJson(paramsMap));
                 return null;
             }
         } finally {
@@ -72,7 +70,7 @@ public class HttpUtils {
                     EntityUtils.consume(response.getEntity());
                     response.close();
                 } catch (IOException e) {
-                    //logger.error("关闭Http出错url={},jsonParam={},msg={}", url, JsonUtils.toJson(paramsMap), e);
+                    log.error("关闭Http出错url={},jsonParam={},msg={}", url, JsonUtils.toJson(paramsMap), e);
                 } finally {
                     response = null;
                 }
@@ -110,12 +108,12 @@ public class HttpUtils {
                 return EntityUtils.toString(response.getEntity());
             } else {
                 EntityUtils.consume(response.getEntity());
-                LOGGER.error(String.format("处理Http结果出错url=%s,jsonParam=%s", url, jsonParam));
+                log.error(String.format("处理Http结果出错url=%s,jsonParam=%s", url, jsonParam));
                 //throw MessageConstants.http_status_error;
                 throw new RuntimeException("处理Http结果出错url");
             }
         } catch (IOException e) {
-            LOGGER.error(String.format("请求Http接口出错url=%s,jsonParam=%s", url, jsonParam), e);
+            log.error(String.format("请求Http接口出错url=%s,jsonParam=%s", url, jsonParam), e);
             //throw MessageConstants.http_request_error;
             throw new RuntimeException("请求Http接口出错");
         } finally {
@@ -124,7 +122,7 @@ public class HttpUtils {
                     EntityUtils.consume(response.getEntity());
                     response.close();
                 } catch (IOException e) {
-                    LOGGER.error(String.format("关闭Http出错url=%s,jsonParam=%s,msg=%s", url, jsonParam, e.getMessage()), e);
+                    log.error(String.format("关闭Http出错url=%s,jsonParam=%s,msg=%s", url, jsonParam, e.getMessage()), e);
                 } finally {
                     response = null;
                 }
@@ -155,12 +153,12 @@ public class HttpUtils {
                 return EntityUtils.toString(response.getEntity());
             } else {
                 EntityUtils.consume(response.getEntity());
-                LOGGER.error(String.format("处理Http结果出错url=%s", url));
+                log.error(String.format("处理Http结果出错url=%s", url));
                 //throw MessageConstants.http_status_error;
                 throw new RuntimeException("处理Http结果出错url");
             }
         } catch (IOException e) {
-            LOGGER.error(String.format("请求Http接口出错url=%s", url), e);
+            log.error(String.format("请求Http接口出错url=%s", url), e);
             //throw MessageConstants.http_request_error;
             throw new RuntimeException("请求Http接口出错url");
         } finally {
@@ -169,7 +167,7 @@ public class HttpUtils {
                     EntityUtils.consume(response.getEntity());
                     response.close();
                 } catch (IOException e) {
-                    LOGGER.error(String.format("关闭Http出错url=%s,msg=%s", url, e.getMessage()), e);
+                    log.error(String.format("关闭Http出错url=%s,msg=%s", url, e.getMessage()), e);
                 } finally {
                     response = null;
                 }

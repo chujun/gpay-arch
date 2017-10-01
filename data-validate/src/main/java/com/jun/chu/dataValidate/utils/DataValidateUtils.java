@@ -1,8 +1,8 @@
 package com.jun.chu.dataValidate.utils;
 
+import lombok.extern.slf4j.Slf4j;
 import net.sf.oval.ConstraintViolation;
 import net.sf.oval.Validator;
-import org.apache.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -16,8 +16,8 @@ import java.util.List;
  * 字符为null，都表示验证通过 ,例如 @NotEmpty @MemberOf
  * 需要加上@NotNull，这个比较恶心，不知道怎么调整
  */
+@Slf4j
 public class DataValidateUtils {
-    final static Logger LOGGER = Logger.getLogger(DataValidateUtils.class);
 
 
     public static final String YYYYMMRegEp = "\\d{4}(0[1-9]|1[0-2])";
@@ -51,7 +51,7 @@ public class DataValidateUtils {
         List<ConstraintViolation> violations = validator.validate(t);
 
         if (violations.size() > 0) {
-            LOGGER.error("Object is invalid," + violations.get(0) + ",obj=" + t);
+            log.error("Object is invalid," + violations.get(0) + ",obj=" + t);
             throw new RuntimeException("数据格式不合法," + violations.get(0), null);
         }
     }
