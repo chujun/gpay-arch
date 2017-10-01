@@ -7,11 +7,12 @@
     <version>1.0.0.4-SNAPSHOT</version>
     <!--<version>1.0.0.3</version>-->
     <modules>
+        <module>basic</module>
         <module>core</module>
         <module>db</module>
         <module>dubbo</module>
         <module>data-validate</module>
-        <module>basic</module>
+        <module>mvc</module>
     </modules>
     <packaging>pom</packaging>
 
