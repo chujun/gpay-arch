@@ -4,7 +4,7 @@
 
     <groupId>com.jun.chu</groupId>
     <artifactId>arch-parent</artifactId>
-    <version>1.0.0.4-SNAPSHOT</version>
+    <version>1.0.0.5-SNAPSHOT</version>
     <!--<version>1.0.0.3</version>-->
     <modules>
         <module>basic</module>
